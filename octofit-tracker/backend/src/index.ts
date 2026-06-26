@@ -1,5 +1,6 @@
 import express from 'express'
 import mongoose from 'mongoose'
+import apiRouter from './routes/api'
 
 const app = express()
 const PORT = process.env.PORT || 8000
@@ -10,6 +11,8 @@ app.use(express.json())
 app.get('/', (req, res) => {
   res.json({ message: 'OctoFit Tracker backend running on port 8000' })
 })
+
+app.use('/api', apiRouter)
 
 async function start() {
   try {
